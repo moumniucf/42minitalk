@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 15:05:28 by youmoumn         ###   ########.fr       */
+/*   Created: 2024/11/25 18:12:11 by youmoumn          #+#    #+#             */
+/*   Updated: 2024/11/28 15:14:25 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "ft_printf.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-
-
-#endif
+int	ft_putchar(char c)
+{
+	write (1, &c, 1);
+	return (1);
+}

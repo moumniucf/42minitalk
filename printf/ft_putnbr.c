@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 15:05:28 by youmoumn         ###   ########.fr       */
+/*   Created: 2024/11/26 11:46:52 by youmoumn          #+#    #+#             */
+/*   Updated: 2024/11/27 16:57:57 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "ft_printf.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
+int	ft_putnbr(int n)
+{
+	int		x;
+	long	y;
 
-
-#endif
+	x = 0;
+	y = (long)n;
+	if (y < 0)
+	{
+		x += ft_putchar('-');
+		y *= -1;
+	}
+	if (y > 9)
+	{
+		x += ft_putnbr(y / 10);
+		x += ft_putnbr(y % 10);
+	}
+	else
+	{
+		x += ft_putchar(y + 48);
+	}
+	return (x);
+}

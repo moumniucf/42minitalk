@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putpoint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 15:05:28 by youmoumn         ###   ########.fr       */
+/*   Created: 2024/11/28 16:11:06 by youmoumn          #+#    #+#             */
+/*   Updated: 2024/12/02 14:54:45 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "ft_printf.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
+int	ft_putpoint(unsigned long n)
+{
+	int		x;
+	char	*s;
 
-
-#endif
+	x = 0;
+	s = "0123456789abcdef";
+	if (n >= 16)
+	{
+		x += ft_putpoint(n / 16);
+		x += ft_putpoint(n % 16);
+	}
+	else
+	{
+		x += ft_putchar(s[n]);
+	}
+	return (x);
+}

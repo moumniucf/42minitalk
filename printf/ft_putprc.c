@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putprc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 15:05:28 by youmoumn         ###   ########.fr       */
+/*   Created: 2024/11/28 17:15:12 by youmoumn          #+#    #+#             */
+/*   Updated: 2024/11/30 15:12:23 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "ft_printf.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
+int	ft_putprc(char s)
+{
+	int	x;
 
-
-#endif
+	x = 0;
+	if (s == '%')
+	{
+		x = ft_putchar('%');
+	}
+	return (x);
+}

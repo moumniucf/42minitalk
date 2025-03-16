@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 15:05:28 by youmoumn         ###   ########.fr       */
+/*   Created: 2024/11/25 16:12:06 by youmoumn          #+#    #+#             */
+/*   Updated: 2024/12/02 09:52:15 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <unistd.h>
+# include <stdarg.h>
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-
+int	ft_printf(const char *rst, ...);
+int	ft_putchar(char c);
+int	ft_puthex(unsigned int n, char c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int n);
+int	ft_putunsigned(unsigned int n);
+int	ft_putpoint(unsigned long n);
+int	ft_putprc(char s);
 
 #endif
