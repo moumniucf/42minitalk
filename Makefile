@@ -3,12 +3,12 @@ SERVER = server
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 HEADER = minitalk.h
 
-C_SRC = client.c
-S_SRC = server.c
+C_SRC = client.c utils.c
+S_SRC = server.c utils.c
 
 OS_SRC = $(S_SRC:%.c=%.o)
 OS_CRC = $(C_SRC:%.c=%.o)
