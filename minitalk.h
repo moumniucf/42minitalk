@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/16 23:47:27 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/17 13:48:22 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void	ft_putchar(char c);
 void	ft_putstr(char *s);
 int		ft_strlen(char *s);
 int		ft_atoi(char *s);
+void	ft_putnbr(int n);
 #endif

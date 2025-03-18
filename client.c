@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:59:07 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/17 00:46:46 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/17 12:51:26 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,39 +20,41 @@ void	send_bit(int pid, int bit)
 	else
 		kill(pid, SIGUSR2);
 }
-void	conver_c(int n)
+void	conver_c(char n)
 {
 	int i = 8;
 	int r;
 	while(i--)
 	{
 		r = (n >> i & 1);
-		printf("%d", r);
 	}
 }
 
 void	send_messag(int pid, char *msg)
 {
-	int i = 7;
-	while(i--)
+	while(*msg)
 	{
-		while(msg[i++])
+		int i = 7;
+		while(i >= 0)
 		{
 			send_bit(pid, (msg[i] >> i & 1));
+			i--;
 		}
+		msg++;
 	}
 }
 
 int main(int ac, char **av)
-{ 
-	(void)ac;
-	/*if(ac < 3)
+{
+	int PID = ft_atoi(av[1]);
+	if(ac == 3)
+	{
+		conver_c(PID);
+		send_messag(PID, av[2]);
+	}
+	else
 	{
 		ft_putstr("Error\n");
 		exit(1);
-	}*/
-	int PID = atoi(av[1]);
-	//send_messag(PID, "youssef");
-	printf("%d", PID);
-	//conver_c(x);
+	}
 }
