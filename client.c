@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:59:07 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/20 23:30:20 by tahadev          ###   ########.fr       */
+/*   Updated: 2025/03/21 13:35:58 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	send_bit(int pid, int bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
+	usleep(500);
 }
 
 void	send_messag(int pid, char *msg)
