@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:11:29 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/22 00:31:41 by tahadev          ###   ########.fr       */
+/*   Updated: 2025/03/22 14:08:14 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int main(int ac, char **av)
 	(void)av;
 	struct sigaction sa;
 	sa.sa_handler = handlle_send;
-	sa.sa_flags = 0;
+	sa.sa_flags = SA_RESTART;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	int PID = getpid();
