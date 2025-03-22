@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 14:59:07 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/21 13:35:58 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:31:29 by tahadev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ void	send_messag(int pid, char *msg)
 {
 	while(*msg)
 	{
-		int i = 7;
-		while(i >= 0)
+		int i = 8;
+		while(i--)
 		{
-			send_bit(pid, (*msg++ >> i & 1));
-			i--;
+			send_bit(pid, (*msg >> i) & 1);
 		}
 		msg++;
 	}
@@ -38,18 +37,15 @@ void	send_messag(int pid, char *msg)
 
 int main(int ac, char **av)
 {
+	if(ac != 3)
+	{
+		ft_putstr("Error\n");
+		exit(1);
+	}
 	int PID = ft_atoi(av[1]);
 	if(PID <= 0)
 	{
 		exit(1);
 	}
-	if(ac == 3)
-	{
-		send_messag(PID, av[2]);
-	}
-	else
-	{
-		ft_putstr("Error\n");
-		exit(1);
-	}
+	send_messag(PID, av[2]);
 }

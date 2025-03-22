@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 15:11:29 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/21 14:05:00 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/22 00:31:41 by tahadev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,24 @@
 
 //PID==> processe id
 
-void	handlle_send(int c)
+void	handlle_send(int sig)
 {
-	int i = 0;
-	char n = 0;
-	while(i <= 7)
+	static int i = 0;
+	static char n = 0;
+	if(sig == SIGUSR1)
 	{
-		n = (c << i & 1);
+		n = (n << 1) | 1;
+	}
+	else if(sig == SIGUSR2)
+	{
+		n = (n << 1);
+	}
+	i++;
+	if(i == 8)
+	{
 		write(1, &n, 1);
-		i++;
+		n = 0;
+		i = 0;
 	}
 }
 
@@ -30,13 +39,21 @@ int main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
+	struct sigaction sa;
+	sa.sa_handler = handlle_send;
+	sa.sa_flags = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	int PID = getpid();
-	signal(PID, handlle_send);
 	printf("PID : [%d]\n", PID);
-	handlle_send('a');
-	// kill(PID, SIGKILL);
-	pause();
-	// while(1)
-	// {
-	// }
+	while(1)
+		pause();
 }
+
+	/*int tab[] = {SIGUSR2, SIGUSR1, SIGUSR1, SIGUSR1, SIGUSR2, SIGUSR2, SIGUSR2, SIGUSR1};
+	int i = 0;
+	while(i < 8)
+	{
+		handlle_send(tab[i]);
+		i++;
+	}*/
