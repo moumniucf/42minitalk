@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 00:34:57 by tahadev           #+#    #+#             */
-/*   Updated: 2025/03/23 01:12:10 by tahadev          ###   ########.fr       */
+/*   Updated: 2025/03/23 16:18:04 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,27 @@ void	handlle_send(int sig)
 		n = (n << 1);
 	}
 	i++;
-    if (b_c == 0)
-    {
-	    if ((n & 0x80) == 0)
-            b_c = 1;
-	    else if ((n & 0xE0) == 0xC0)
-		    b_c = 2;
-	    else if ((n & 0xF0) == 0xE0)
-		    b_c = 3;
-	    else if ((n & 0xF8) == 0xF0)
-		    b_c = 4;
-    }
-    buff[i / 8] = n;
-	if(i / 8 + 1 == b_c)
+	if(i % 8 == 0)
 	{
-		write(1, buff, b_c);
-        b_c = 0;
-        i = 0;
+    	buff[i / 8 - 1] = n;
+
+    	if (b_c == 0)
+    	{
+	   		if ((n & 0x80) == 0)
+            	b_c = 1;
+	    	else if ((n & 0xE0) == 0xC0)
+		    	b_c = 2;
+	    	else if ((n & 0xF0) == 0xE0)
+		    	b_c = 3;
+	    	else if ((n & 0xF8) == 0xF0)
+		    	b_c = 4;
+    	}
+		if((i / 8) == b_c)
+		{
+			write(1, buff, b_c);
+        	b_c = 0;
+        	i = 0;
+		}
 	}
 }
 
