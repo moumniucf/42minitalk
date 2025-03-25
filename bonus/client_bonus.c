@@ -3,30 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tahadev <tahadev@student.42.fr>            +#+  +:+       +#+        */
+/*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 00:15:17 by tahadev           #+#    #+#             */
-/*   Updated: 2025/03/23 01:11:42 by tahadev          ###   ########.fr       */
+/*   Created: 2025/03/25 11:32:20 by youmoumn          #+#    #+#             */
+/*   Updated: 2025/03/25 15:51:27 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	send_bit(int pid, int bit)
 {
-	if(bit == 1)
+	if (bit == 1)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	usleep(500);
+	usleep(250);
 }
 
 void	send_messag(int pid, char *msg)
 {
-	while(*msg)
+	int	i;
+
+	while (*msg)
 	{
-		int i = 8;
-		while(i--)
+		i = 8;
+		while (i--)
 		{
 			send_bit(pid, (*msg >> i) & 1);
 		}
@@ -34,17 +36,20 @@ void	send_messag(int pid, char *msg)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	if(ac != 3)
+	int	pid;
+
+	if (ac != 3)
 	{
 		ft_putstr("Error\n");
 		exit(1);
 	}
-	int PID = ft_atoi(av[1]);
-	if(PID <= 0)
+	pid = ft_atoi(av[1]);
+	if (pid <= 0)
 	{
 		exit(1);
 	}
-	send_messag(PID, av[2]);
+	send_messag(pid, av[2]);
+	return (0);
 }

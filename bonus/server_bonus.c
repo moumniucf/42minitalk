@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 15:11:29 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/25 13:57:09 by youmoumn         ###   ########.fr       */
+/*   Created: 2025/03/25 11:31:40 by youmoumn          #+#    #+#             */
+/*   Updated: 2025/03/25 16:20:35 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	handlle_send(int sig)
 {
@@ -41,6 +41,7 @@ int	main(void)
 
 	sa.sa_handler = handlle_send;
 	sa.sa_flags = SA_RESTART;
+	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	pid = getpid();

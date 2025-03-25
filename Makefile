@@ -6,9 +6,10 @@ BSERVER = server_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 
 HEADER = minitalk.h
+BHEADER = bonus/minitalk_bonus.h
 
 C_SRC = client.c utils.c
 S_SRC = server.c utils.c
@@ -16,8 +17,8 @@ S_SRC = server.c utils.c
 OS_SRC = $(S_SRC:%.c=%.o)
 OS_CRC = $(C_SRC:%.c=%.o)
 
-BC_SRC = client_bonus.c utils.c
-BS_SRC = server_bonus.c utils.c
+BC_SRC = bonus/client_bonus.c bonus/utils_bonus.c
+BS_SRC = bonus/server_bonus.c bonus/utils_bonus.c
 
 BOS_SRC = $(BS_SRC:%.c=%.o)
 BOS_CRC = $(BC_SRC:%.c=%.o)
@@ -26,7 +27,11 @@ all : $(CLIENT) $(SERVER)
 
 bonus : $(BCLIENT) $(BSERVER)
 
-%.o : %.c
+%_bonus.o : %_bonus.c $(BHEADER)
+	@$(CC) -c $< $(CFLAGS) -o $@
+	@echo "compiling" $< "to" $@
+
+%.o : %.c $(HEADER)
 	@$(CC) -c $< $(CFLAGS) -o $@
 	@echo "compiling" $< "to" $@
 

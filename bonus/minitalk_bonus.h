@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 14:30:16 by youmoumn          #+#    #+#             */
-/*   Updated: 2024/11/28 14:56:56 by youmoumn         ###   ########.fr       */
+/*   Created: 2025/03/25 13:03:05 by youmoumn          #+#    #+#             */
+/*   Updated: 2025/03/25 13:49:17 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
-int	ft_putunsigned(unsigned int n)
-{
-	unsigned int	x;
+# include <unistd.h>
+# include <signal.h>
+# include <stdlib.h>
 
-	x = 0;
-	if (n > 9)
-	{
-		x += ft_putunsigned(n / 10);
-		x += ft_putunsigned(n % 10);
-	}
-	else
-	{
-		x += ft_putchar(n + 48);
-	}
-	return (x);
-}
+void	ft_putchar(char c);
+void	ft_putstr(char *s);
+int		ft_atoi(char *s);
+void	ft_putnbr(int n);
+
+#endif
