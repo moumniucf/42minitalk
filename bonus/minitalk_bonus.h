@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:03:05 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/25 13:49:17 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:00:40 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <signal.h>
 # include <stdlib.h>
+# include <string.h>
+# include <stdbool.h>
 
 void	ft_putchar(char c);
 void	ft_putstr(char *s);
