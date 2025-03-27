@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_bzero_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 12:44:55 by youmoumn         ###   ########.fr       */
+/*   Created: 2025/03/27 10:35:21 by youmoumn          #+#    #+#             */
+/*   Updated: 2025/03/27 13:32:36 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk_bonus.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
+void	ft_bzero(char *s, size_t n)
+{
+	size_t	i;
 
-void	ft_putchar(char c);
-void	ft_putstr(char *s);
-int		ft_atoi(char *s);
-void	ft_putnbr(int n);
-int		is_dig(char *pid);
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i++] = '\0';
+	}
+}

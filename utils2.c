@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 14:55:31 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 12:44:55 by youmoumn         ###   ########.fr       */
+/*   Created: 2025/03/27 12:41:47 by youmoumn          #+#    #+#             */
+/*   Updated: 2025/03/27 12:44:17 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-
-void	ft_putchar(char c);
-void	ft_putstr(char *s);
-int		ft_atoi(char *s);
-void	ft_putnbr(int n);
-int		is_dig(char *pid);
-
-#endif
+int	is_dig(char *pid)
+{
+	while (*pid)
+	{
+		if (*pid < '0' || *pid > '9')
+			return (0);
+		pid++;
+	}
+	return (1);
+}

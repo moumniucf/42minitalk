@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:32:20 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/26 15:53:48 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/27 14:51:31 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,17 @@ void	handll_ack(int sig)
 	}
 }
 
-void	send_bit(int pid, int bit)
+void	handll_ctlc(int sig)
 {
-	if (bit == 1)
-		kill(pid, SIGUSR1);
-	else
-		kill(pid, SIGUSR2);
-	usleep(250);
-}
-
-void	send_null(int pid)
-{
-	int		i;
-	char	nullc;
-
-	nullc = '\0';
-	i = 8;
-	while (i--)
-	{
-		send_bit(pid, (nullc >> i) & 1);
-	}
+	(void)sig;
+	handlle_out('\0', 1);
+	exit(0);
 }
 
 void	send_messag(int pid, char *msg)
 {
 	int	i;
 
-	send_null(pid);
 	while (*msg)
 	{
 		i = 8;
@@ -57,7 +41,7 @@ void	send_messag(int pid, char *msg)
 		}
 		msg++;
 	}
-	send_null(pid);
+	send_nl(pid);
 }
 
 int	main(int ac, char **av)
@@ -65,13 +49,14 @@ int	main(int ac, char **av)
 	int	pid;
 
 	signal(SIGUSR1, &handll_ack);
+	signal(SIGINT, &handll_ctlc);
 	if (ac != 3)
 	{
 		ft_putstr("Error\n");
 		exit(1);
 	}
 	pid = ft_atoi(av[1]);
-	if (pid <= 0)
+	if (pid <= 0 || !is_dig(av[1]))
 	{
 		exit(1);
 	}
