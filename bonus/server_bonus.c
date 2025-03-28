@@ -6,23 +6,28 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:31:40 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 16:13:52 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/28 13:38:11 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void	handl_pid(int pid, siginfo_t *f)
+void	help_send(char n, siginfo_t *f)
 {
 	static int	i = 0;
-	static char	n = 0;
+	static char	ptr[5];
+	static int	b = 0;
 
-	if (pid != f->si_pid)
+	ptr[i++] = n;
+	if (i == 1)
+		b = nb_bit(n >> 4);
+	if (--b == 0)
 	{
-		pid = f->si_pid;
-		n = 0;
+		write(1, ptr, i);
 		i = 0;
 	}
+	if (n == '\n')
+		kill(f->si_pid, SIGUSR1);
 }
 
 void	handlle_send(int sig, siginfo_t *f, void *c)
@@ -32,7 +37,12 @@ void	handlle_send(int sig, siginfo_t *f, void *c)
 	static int	pid = 0;
 
 	(void)c;
-	handl_pid(pid, f);
+	if (pid != f->si_pid)
+	{
+		pid = f->si_pid;
+		n = 0;
+		i = 0;
+	}
 	if (sig == SIGUSR1)
 		n = (n << 1) | 1;
 	else if (sig == SIGUSR2)
@@ -40,12 +50,7 @@ void	handlle_send(int sig, siginfo_t *f, void *c)
 	i++;
 	if (i == 8)
 	{
-		if (n != '\n')
-		{
-			write(1, &n, 1);
-		}
-		else
-			kill(f->si_pid, SIGUSR1);
+		help_send(n, f);
 		n = 0;
 		i = 0;
 	}

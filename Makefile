@@ -17,8 +17,8 @@ S_SRC = server.c utils.c utils2.c
 OS_SRC = $(S_SRC:%.c=%.o)
 OS_CRC = $(C_SRC:%.c=%.o)
 
-BC_SRC = bonus/client_bonus.c bonus/utils_bonus.c bonus/utils2_bonus.c bonus/ctlc_bonus.c bonus/ft_bzero_bonus.c 
-BS_SRC = bonus/server_bonus.c bonus/utils_bonus.c bonus/utils2_bonus.c  bonus/ctlc_bonus.c bonus/ft_bzero_bonus.c 
+BC_SRC = bonus/client_bonus.c bonus/utils_bonus.c bonus/utils2_bonus.c
+BS_SRC = bonus/server_bonus.c bonus/utils_bonus.c bonus/utils2_bonus.c
 
 BOS_SRC = $(BS_SRC:%.c=%.o)
 BOS_CRC = $(BC_SRC:%.c=%.o)

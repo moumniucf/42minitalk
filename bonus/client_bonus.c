@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:32:20 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 14:51:31 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:52:25 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ void	handll_ack(int sig)
 		ft_putstr("done!\n");
 		exit(0);
 	}
-}
-
-void	handll_ctlc(int sig)
-{
-	(void)sig;
-	handlle_out('\0', 1);
-	exit(0);
 }
 
 void	send_messag(int pid, char *msg)
@@ -49,7 +42,6 @@ int	main(int ac, char **av)
 	int	pid;
 
 	signal(SIGUSR1, &handll_ack);
-	signal(SIGINT, &handll_ctlc);
 	if (ac != 3)
 	{
 		ft_putstr("Error\n");
