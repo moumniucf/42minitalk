@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 13:02:17 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 15:04:05 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/29 15:41:52 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	send_nl(int pid)
 	int		i;
 	char	nl;
 
-	nl = '\n';
+	nl = '\0';
 	i = 8;
 	while (i--)
 	{

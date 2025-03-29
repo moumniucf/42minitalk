@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:31:40 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/28 13:38:11 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/29 15:42:00 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	help_send(char n, siginfo_t *f)
 		write(1, ptr, i);
 		i = 0;
 	}
-	if (n == '\n')
+	if (n == '\0')
 		kill(f->si_pid, SIGUSR1);
 }
 

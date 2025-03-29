@@ -6,7 +6,7 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 09:57:18 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/28 14:51:57 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/29 15:42:17 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	send_bit(int pid, int bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	usleep(100);
-	usleep(100);
+	usleep(250);
+	usleep(250);
 }
 
 int	is_dig(char *pid)

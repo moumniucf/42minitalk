@@ -6,17 +6,11 @@
 /*   By: youmoumn <youmoumn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:32:10 by youmoumn          #+#    #+#             */
-/*   Updated: 2025/03/27 12:37:34 by youmoumn         ###   ########.fr       */
+/*   Updated: 2025/03/29 15:42:38 by youmoumn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	handll_c(int sig)
-{
-	(void)sig;
-	exit(0);
-}
 
 void	send_bit(int pid, int bit)
 {
@@ -24,7 +18,8 @@ void	send_bit(int pid, int bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	usleep(500);
+	usleep(250);
+	usleep(250);
 }
 
 void	send_messag(int pid, char *msg)
@@ -46,7 +41,6 @@ int	main(int ac, char **av)
 {
 	int	pid;
 
-	signal(SIGINT, &handll_c);
 	if (ac != 3)
 	{
 		ft_putstr("Error\n");
